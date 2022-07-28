@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from 'react'
+import ChildA from './ChildA'
 
-function App() {
+const Name = createContext();
+const Place = createContext();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <Name.Provider value={'AbdulKarim'}>
+        <Place.Provider value={'Gujarat'}>
+          <ChildA />
+        </Place.Provider>
+      </Name.Provider> 
+
     </div>
-  );
+
+  )
 }
 
-export default App;
+export default App
+export {Name, Place};
+
+
+// Steps for passing data through context API:
+// -> create context (what we want to pass) -> export it under default, then only it can be imported
+// -> provide (that passes the data) -> takes a value to pass
+// -> conusmer ( that uses the data) -> takes a callback function 
